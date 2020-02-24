@@ -1,0 +1,65 @@
+!curl https://raw.githubusercontent.com/MicrosoftLearning/intropython/master/elements1_20.txt -o elements1_20.txt
+elements1_20 = open('elements1_20.txt', 'r')
+#elements = elements1_20.readline()
+elements = elements1_20.readlines()
+el_list = list(elements)
+el_2 = []
+for item in el_list:
+    item2 = item.strip("\n").lower()
+   # print(item)
+    el_2.append(item2)
+#print(el_2)
+print("Hi! we'll be playing a game: you need to guess the name of the first 20 elements of the periodic table")
+print("rules:")
+print("1. do not enter the same element twice, doing this will not work")
+print("2. if you don't enter something, it doesn't count as a chance")
+def get_names():
+    count = 0
+    element_names = []
+    string = input("enter the name of an element: ")
+    element_names.append(string)
+    #print(element_names)
+    while count <= 3:
+        string = input("enter the element of a name: ")
+        if string not in element_names:
+            element_names.append(string)
+            #print(element_names)
+            count+= 1
+        elif string == "":
+            count+= 0
+        elif string in element_names:
+            count+= 0
+            print("you already said this")
+    return element_names
+    
+
+out_name = get_names()
+
+
+correct = []
+wrong = []
+for item in out_name:
+    if item in (el_2):
+        correct.append(item)
+    else:
+        wrong.append(item)
+        
+test_num = len(correct)
+test_fin = test_num*20
+test_str = str(test_fin)
+print("")
+print(test_str + "%")
+
+    
+corr_title = []        
+for item in correct:
+    it = item.title()
+    corr_title.append(it)
+
+
+print("Correct: " + (' '.join(corr_title)))
+elements1_20.close()
+
+
+elements = elements1_20.readline()
+    
