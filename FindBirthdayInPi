@@ -1,0 +1,52 @@
+string = input("give me a date ")
+import datetime
+import math
+pi_num = str(round(math.pi,1000))
+pi_num = pi_num.replace('.','')
+for s in string:
+    try:
+        s = int(s)
+    except:
+        split_object = s
+
+s_string = string.replace(split_object,'')
+
+word = []
+num = []
+if s_string.isdigit():
+    True
+    if str(s_string) in pi_num:
+        print("yes it is there at",pi_num.index(str(s_string)))
+    else:
+        print("it isn't there")
+else:
+    for x in s_string:
+        if x.isalpha():
+            word.append(x)
+        elif x.isdigit():
+            num.append(x)
+    Word = ''.join(word)
+    Num = ''.join(num)
+    try:
+        if len(Word) > 3:
+            format = '%B'
+            datetime_str = datetime.datetime.strptime(Word, format)
+        elif len(Word) <= 3:
+            format = '%b'
+            datetime_str = datetime.datetime.strptime(Word, format)
+        month = datetime_str.strftime("%-m")
+        if len(Num) > 4:
+            date_final = month + Num.replace(Num[-4:-2],'')
+            final_date = Num.replace(Num[-4:-2],'') + month
+        else:
+            date_final = month + Num.replace(Num[-4:-2],'')
+    
+        if date_final in pi_num:
+            print("yes it is there at",pi_num.index(str(date_final)))
+        else:
+            print('it isnt there')
+    except Exception as object1:
+        print("there is something wrong with the month")
+    
+    
+    
